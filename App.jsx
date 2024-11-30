@@ -20,10 +20,18 @@ function App() {
     ]
   );
 
+  const addTask = (taskText) => {
+    if (tasks.some((task) => task === taskText)) {
+      alert("Duplicated detected");
+    } else {
+      setTasks([...tasks, taskText]);
+    }   
+  };
+
   return (
     <SafeAreaView>
       <ToDoList tasks={tasks} />
-      <ToDoForm />
+      <ToDoForm addTask={addTask}/>
     </SafeAreaView>
   );
 }
